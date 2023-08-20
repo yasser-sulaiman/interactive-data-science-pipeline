@@ -33,7 +33,7 @@ def problems():
     return dropdown
 
 
-def attributes():
+def select_target():
     dropdown = html.Div([
                         'Select The Target Variable',
                         dcc.Dropdown(
@@ -117,4 +117,18 @@ def manuel_feature_selection():
                 )
     return dropdown
 
+
+def select_attributes(div_id, dd_id, multiple=False):
+    dropdown = html.Div([
+                        'Select an Attribute',
+                        dcc.Dropdown(
+                            id=dd_id,
+                            placeholder='Select an Attribute',
+                            multi=multiple,
+                            ),
+                        ],
+                    id=div_id,
+                    className='invisible-dropdown',
+                )
+    return dropdown
 

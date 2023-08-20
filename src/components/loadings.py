@@ -1,11 +1,11 @@
 from dash import dcc, html, dash_table
-from src.components.ids import DATA_TABLE, RESULTS_CONTAINER
+from src.components.ids import RESULTS_CONTAINER
 
-def data_table():
+def data_table(id):
     spinner = dcc.Loading(
                     html.Div(
                         children=dash_table.DataTable(
-                            id=DATA_TABLE,
+                            id=id,
                             data=[],
                             columns=[],
                         ),

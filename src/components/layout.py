@@ -1,5 +1,5 @@
 from dash import html
-from src.components import uploads, loadings, dropdowns, buttons
+from src.components import uploads, loadings, dropdowns, buttons, ids
 
 
 def create_main_layout() -> html.Div:
@@ -25,10 +25,10 @@ def create_main_layout() -> html.Div:
             html.Hr(),
 
             # upload data Container
-            uploads.upload_data(),
+            uploads.upload_data(ids.UPLOAD_DATA_MAIN),
 
             # Data Table container
-            loadings.data_table(),
+            loadings.data_table(ids.DATA_TABLE_MAIN),
 
             html.Br(),
 
@@ -39,7 +39,7 @@ def create_main_layout() -> html.Div:
                     dropdowns.problems(),
                 
                     # Attributes Dropdown container
-                    dropdowns.attributes(),
+                    dropdowns.select_target(),
                     
                     # Model Dropdown container
                     dropdowns.models(),
@@ -60,3 +60,44 @@ def create_main_layout() -> html.Div:
             loadings.results(),
         ],
     )
+
+
+def create_visualization() -> html.Div:
+    return html.Div(
+        className='body',
+        children=[
+            # Header
+            html.Div(
+                [
+                    html.H1(
+                        children='Welcome to HahoML',
+                        style={'textAlign': 'center'},
+                    ),
+                    html.P(
+                        children='Where ML made easier than ever!',
+                        style={'textAlign': 'center'},
+                    ),
+                ],
+                className='header-container',
+            ),
+
+            html.Hr(),
+
+            # upload data Container
+            uploads.upload_data(ids.UPLOAD_DATA_VIS),
+
+            # Data Table container
+            loadings.data_table(ids.DATA_TABLE_VIS),
+
+            html.Br(),
+
+            html.Div(
+                className="single-attribute-info",
+                children=[
+                    dropdowns.select_attributes(ids.SELECT_SINGLE_ATTRIBUTE_CONTAINER,
+                                                ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
+                                                multiple=False)
+                ]
+            )
+        ])
+

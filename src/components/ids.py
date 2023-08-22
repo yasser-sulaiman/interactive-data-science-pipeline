@@ -22,3 +22,6 @@ SELECT_FEATURE_CONTAINER = 'select-feature-container'
 SELECT_MANUEL_FEATURE_CONTAINER = 'select-manual-feature-container'
 
 SELECT_SINGLE_ATTRIBUTE_CONTAINER = 'select-single-attribute-container'
+
+SINGLE_ATTRIBUTE_INFO = "single-attribute-info"
+SINGLE_ATTRIBUTE_GRAPH = "single-attribute-graph"

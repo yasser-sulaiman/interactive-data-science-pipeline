@@ -51,36 +51,6 @@ def upload_data_main(list_of_contents, list_of_names):
 
 
 @callback(
-    [
-        Output(ids.DATA_TABLE_VIS, 'data'),
-        Output(ids.DATA_TABLE_VIS, 'columns'),
-        Output(ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN, 'options'),
-        Output(ids.SELECT_SINGLE_ATTRIBUTE_CONTAINER, 'className'),
-    ],
-    [Input(ids.UPLOAD_DATA_VIS, 'contents')],
-    [State(ids.UPLOAD_DATA_VIS, 'filename')],
-    prevent_initial_callbacks=True,
-    
-)
-def upload_data_vis(list_of_contents, list_of_names):
-    global DATA
-
-    if list_of_contents is not None:
-        DATA = parse_contents(list_of_contents, list_of_names)
-
-        if len(DATA) > 0:
-            df_head = DATA.head(10)
-            return (
-                df_head.to_dict('records'),
-                [{'name': i, 'id': i} for i in df_head.columns],
-                df_head.columns.values,
-                'visible-dropdown',
-            )
-
-    return [], [], [], 'invisible'
-
-
-@callback(
     Output('select-target-container', 'className'),
     Input('problem-dropdown-selection', 'value'),
     prevent_initial_callbacks=True,

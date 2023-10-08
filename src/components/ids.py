@@ -23,5 +23,12 @@ SELECT_MANUEL_FEATURE_CONTAINER = 'select-manual-feature-container'
 
 SELECT_SINGLE_ATTRIBUTE_CONTAINER = 'select-single-attribute-container'
 
-SINGLE_ATTRIBUTE_INFO = "single-attribute-info"
+SINGLE_ATTRIBUTE_INFO_CONTAINER = "single-attribute-info"
 SINGLE_ATTRIBUTE_GRAPH = "single-attribute-graph"
+
+CORRELATION_MATRIX = "correlation-matrix"
+CORRELATION_MATRIX_GRAPH = "correlation-matrix-graph"
+SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN = "select-correlation-matrix-attributes-dropdown"
+
+SINGLE_ATTRIBUTE_GRAPH_CONTAINER = "single-attribute-graph-container"
+CORRELATION_MATRIX_GRAPH_CONTAINER = "correlation-matrix-graph-container"

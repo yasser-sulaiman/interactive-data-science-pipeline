@@ -57,8 +57,8 @@ def create_visualization() -> html.Div:
             html.Br(),
 
             html.Div(
-                className="single-attribute-info",
-                id=ids.SINGLE_ATTRIBUTE_INFO,
+                className="single-attribute-info-container",
+                id=ids.SINGLE_ATTRIBUTE_INFO_CONTAINER,
                 children=[
                     html.Div(
                         dropdowns.select_attributes(
@@ -72,7 +72,28 @@ def create_visualization() -> html.Div:
 
                     html.Div(
                         dcc.Graph(id=ids.SINGLE_ATTRIBUTE_GRAPH),
-                        id="single-attribute-visual-container",
+                        id=ids.SINGLE_ATTRIBUTE_GRAPH_CONTAINER,
+                    )
+                ]
+            ),
+
+            html.Div(
+                className="correlation-matrix-container",
+                id=ids.CORRELATION_MATRIX,
+                children=[
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN,
+                            multiple=True
+                        ),
+                        className="multiple-attribute-dropdown-container"
+                    ),
+
+                    html.Br(),
+
+                    html.Div(
+                        dcc.Graph(id=ids.CORRELATION_MATRIX_GRAPH),
+                        id=ids.CORRELATION_MATRIX_GRAPH_CONTAINER,
                     )
                 ]
             )

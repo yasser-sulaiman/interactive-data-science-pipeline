@@ -112,6 +112,49 @@ def create_visualization() -> html.Div:
             ),
 
             html.Br(),
+
+            ########################## THREE Attributes ########################
+            html.Div("Three Attribute Info Container"),
+
+            html.Div(
+                className="three-attribute-info-container",
+                id=ids.THREE_ATTRIBUTES_INFO_CONTAINER,
+                children=[
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN1,
+                            multiple=False
+                        ),
+                        className="three-attribute-dropdown-container"
+                    ),
+
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2,
+                            multiple=False
+                        ),
+                        className="three-attribute-dropdown-container"
+                    ),
+
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN3,
+                            multiple=False
+                        ),
+                        className="three-attribute-dropdown-container"
+                    ),
+
+                    html.Br(),
+
+                    html.Div(
+                        dcc.Graph(id=ids.THREE_ATTRIBUTES_GRAPH),
+                        id=ids.THREE_ATTRIBUTES_GRAPH_CONTAINER,
+                    )
+                ]
+            ),
+
+            html.Br(),
+
             ########################## Correlation Matrix ########################
             html.Div("Correlation Matrix"),
 

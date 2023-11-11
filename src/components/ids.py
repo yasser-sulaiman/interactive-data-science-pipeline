@@ -33,6 +33,14 @@ TWO_ATTRIBUTES_INFO_CONTAINER = "two-attribute-info"
 TWO_ATTRIBUTES_GRAPH = "two-attributes-graph"
 TWO_ATTRIBUTES_GRAPH_CONTAINER = "two-attributes-graph-container"
 
+# Visualization of Three attributes 
+SELECT_THREE_ATTRIBUTES_DROPDOWN1 = 'select-three-attributes-dropdown1'
+SELECT_THREE_ATTRIBUTES_DROPDOWN2 = 'select-three-attributes-dropdown2'
+SELECT_THREE_ATTRIBUTES_DROPDOWN3 = 'select-three-attributes-dropdown3'
+THREE_ATTRIBUTES_INFO_CONTAINER = "three-attribute-info"
+THREE_ATTRIBUTES_GRAPH = "three-attributes-graph"
+THREE_ATTRIBUTES_GRAPH_CONTAINER = "three-attributes-graph-container"
+
 # Visualization of Correlation Matrix
 CORRELATION_MATRIX = "correlation-matrix"
 CORRELATION_MATRIX_GRAPH = "correlation-matrix-graph"

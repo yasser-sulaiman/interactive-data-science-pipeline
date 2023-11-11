@@ -55,6 +55,8 @@ def create_visualization() -> html.Div:
             loadings.data_table(ids.DATA_TABLE_VIS),
 
             html.Br(),
+            ########################## Single Attribute ########################
+            html.Div("Single Attribute Info Container"),
 
             html.Div(
                 className="single-attribute-info-container",
@@ -76,6 +78,42 @@ def create_visualization() -> html.Div:
                     )
                 ]
             ),
+
+            ########################## Two Attributes ########################
+            html.Div("Two Attribute Info Container"),
+
+            html.Div(
+                className="two-attribute-info-container",
+                id=ids.TWO_ATTRIBUTES_INFO_CONTAINER,
+                children=[
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1,
+                            multiple=False
+                        ),
+                        className="two-attribute-dropdown-container"
+                    ),
+
+                    html.Div(
+                        dropdowns.select_attributes(
+                            ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2,
+                            multiple=False
+                        ),
+                        className="two-attribute-dropdown-container"
+                    ),
+
+                    html.Br(),
+
+                    html.Div(
+                        dcc.Graph(id=ids.TWO_ATTRIBUTES_GRAPH),
+                        id=ids.TWO_ATTRIBUTES_GRAPH_CONTAINER,
+                    )
+                ]
+            ),
+
+            html.Br(),
+            ########################## Correlation Matrix ########################
+            html.Div("Correlation Matrix"),
 
             html.Div(
                 className="correlation-matrix-container",

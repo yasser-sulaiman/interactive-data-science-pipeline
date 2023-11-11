@@ -20,6 +20,8 @@ Y = None
         Output(ids.DATA_TABLE_VIS, 'data'),
         Output(ids.DATA_TABLE_VIS, 'columns'),
         Output(ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN, 'options'),
+        Output(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1, 'options'),
+        Output(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2, 'options'),
         Output(ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN, 'options'),
     ],
     [Input(ids.UPLOAD_DATA_VIS, 'contents')],
@@ -41,9 +43,11 @@ def upload_data_vis(list_of_contents, list_of_names):
                 [{'name': i, 'id': i} for i in df_head.columns],
                 attributes,
                 attributes,
+                attributes,
+                attributes,
             )
 
-    return [], [], [], []
+    return [], [], [], [], [], []
 
 
 @callback(
@@ -59,6 +63,28 @@ def update_single_attribute_graph(col):
         return px.histogram(column), "single-attribute-visual-container"
     else:
         return {}, 'invisible'
+
+
+@callback(
+    [
+        Output(ids.TWO_ATTRIBUTES_GRAPH, 'figure'),
+        Output(ids.TWO_ATTRIBUTES_GRAPH_CONTAINER, 'className')
+    ],
+    [
+        Input(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1, 'value'),
+        Input(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2, 'value')
+    ],
+    prevent_initial_callbacks=True,
+)
+def update_two_attributes_graph(col1, col2):
+    global DATA
+    if DATA is not None and col1 is not None and col2 is not None:
+        data_x = DATA[col1]
+        data_y = DATA[col2]
+        return px.scatter(x=data_x, y=data_y, labels={'x':col1, 'y':col2}), "two-attributes-visual-container"
+    else:
+        return {}, 'invisible'
+
 
 @callback(
     Output(ids.CORRELATION_MATRIX_GRAPH, 'figure'),

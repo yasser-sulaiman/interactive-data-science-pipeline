@@ -63,11 +63,14 @@ def create_visualization() -> html.Div:
                 id=ids.SINGLE_ATTRIBUTE_INFO_CONTAINER,
                 children=[
                     html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
-                            multiple=False
+                        html.Div(
+                            dropdowns.select_attributes(
+                                ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
+                                multiple=False
+                            ),
+                            className="single-attribute-dropdown-container"
                         ),
-                        className="single-attribute-dropdown-container"
+                        className="vis-dropdowns-container"
                     ),
 
                     html.Br(),
@@ -83,23 +86,28 @@ def create_visualization() -> html.Div:
             html.Div("Two Attribute Info Container"),
 
             html.Div(
-                className="two-attribute-info-container",
+                className="two-attributes-info-container",
                 id=ids.TWO_ATTRIBUTES_INFO_CONTAINER,
                 children=[
                     html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1,
-                            multiple=False
-                        ),
-                        className="two-attribute-dropdown-container"
-                    ),
+                        children=[
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1,
+                                    multiple=False
+                                ),
+                                className="two-attributes-dropdown-container"
+                            ),
 
-                    html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2,
-                            multiple=False
-                        ),
-                        className="two-attribute-dropdown-container"
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2,
+                                    multiple=False
+                                ),
+                                className="two-attributes-dropdown-container"
+                            )
+                        ],
+                        className="vis-dropdowns-container"
                     ),
 
                     html.Br(),
@@ -117,33 +125,38 @@ def create_visualization() -> html.Div:
             html.Div("Three Attribute Info Container"),
 
             html.Div(
-                className="three-attribute-info-container",
+                className="three-attributes-info-container",
                 id=ids.THREE_ATTRIBUTES_INFO_CONTAINER,
                 children=[
                     html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN1,
-                            multiple=False
-                        ),
-                        className="three-attribute-dropdown-container"
-                    ),
+                        children=[
+                                    
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_THREE_ATTRIBUTES_DROPDOWN1,
+                                    multiple=False
+                                ),
+                                className="three-attributes-dropdown-container"
+                            ),
 
-                    html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2,
-                            multiple=False
-                        ),
-                        className="three-attribute-dropdown-container"
-                    ),
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2,
+                                    multiple=False
+                                ),
+                                className="three-attributes-dropdown-container"
+                            ),
 
-                    html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_THREE_ATTRIBUTES_DROPDOWN3,
-                            multiple=False
-                        ),
-                        className="three-attribute-dropdown-container"
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_THREE_ATTRIBUTES_DROPDOWN3,
+                                    multiple=False
+                                ),
+                                className="three-attributes-dropdown-container"
+                            ),
+                        ],
+                        className="vis-dropdowns-container"
                     ),
-
                     html.Br(),
 
                     html.Div(
@@ -157,17 +170,20 @@ def create_visualization() -> html.Div:
 
             ########################## Correlation Matrix ########################
             html.Div("Correlation Matrix"),
-
+    
             html.Div(
-                className="correlation-matrix-container",
+                className="correlation-matrix-info-container",
                 id=ids.CORRELATION_MATRIX,
                 children=[
                     html.Div(
-                        dropdowns.select_attributes(
-                            ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN,
-                            multiple=True
+                        html.Div(
+                            dropdowns.select_attributes(
+                                ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN,
+                                multiple=True
+                            ),
+                            className="correlation-matrix-attributes-dropdown-container"
                         ),
-                        className="multiple-attribute-dropdown-container"
+                        className="vis-dropdowns-container"
                     ),
 
                     html.Br(),
@@ -175,7 +191,10 @@ def create_visualization() -> html.Div:
                     html.Div(
                         dcc.Graph(id=ids.CORRELATION_MATRIX_GRAPH),
                         id=ids.CORRELATION_MATRIX_GRAPH_CONTAINER,
-                    )
+                    ),
+            
+                    html.Br(),
+                    html.Div("-------")
                 ]
             )
         ])

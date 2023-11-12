@@ -66,7 +66,7 @@ def update_single_attribute_graph(col):
     global DATA
     if DATA is not None and col is not None:
         column = DATA[col]
-        return px.histogram(column), "single-attribute-visual-container"
+        return px.histogram(column), "visual-container"
     else:
         return {}, 'invisible'
 
@@ -87,7 +87,7 @@ def update_two_attributes_graph(col1, col2):
     if DATA is not None and col1 is not None and col2 is not None:
         data_x = DATA[col1]
         data_y = DATA[col2]
-        return px.scatter(x=data_x, y=data_y, labels={'x':col1, 'y':col2}), "two-attributes-visual-container"
+        return px.scatter(x=data_x, y=data_y, labels={'x':col1, 'y':col2}), "visual-container"
     else:
         return {}, 'invisible'
 
@@ -113,7 +113,8 @@ def update_three_attributes_graph(col1, col2, col3):
         data_x = DATA[col1]
         data_y = DATA[col2]
         data_z = DATA[col3]
-        return px.scatter_3d(x=data_x, y=data_y, z=data_z, labels={'x':col1, 'y':col2, 'z':col3}), "three-attributes-visual-container"
+        fig = px.scatter_3d(x=data_x, y=data_y, z=data_z, labels={'x':col1, 'y':col2, 'z':col3})
+        return fig, "visual-container"
     else:
         return {}, 'invisible'
 
@@ -130,7 +131,7 @@ def update_correlation_matrix_graph(col):
         corr_data = DATA[col]
         corr_matrix = corr_data.corr()
         fig = px.imshow(corr_matrix, text_auto=True, aspect="auto")
-        return fig, "multiple-attribute-dropdown-container"
+        return fig, "visual-container"
     else:
         return {}, 'invisible'
     

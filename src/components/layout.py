@@ -2,49 +2,23 @@ from dash import html, dcc
 from src.components import uploads, loadings, dropdowns, buttons, ids
 
 
-def create_main_layout() -> html.Div:
-    return html.Div(
+def create_cleaning_layout()-> html.Div:
+     return html.Div(
         className="body",
         children=[
             # upload data Container
-            uploads.upload_data(ids.UPLOAD_DATA_MAIN),
+            uploads.upload_data(ids.UPLOAD_DATA_CLEANING),
 
             # Data Table container
-            loadings.data_table(ids.DATA_TABLE_MAIN),
+            loadings.data_table(ids.DATA_TABLE_CLEANING),
 
             html.Br(),
 
-            # Dropdowns container
-            html.Div(
-                [
-                    # Problem Dropdown container
-                    dropdowns.problems(),
-                
-                    # Attributes Dropdown container
-                    dropdowns.select_target(),
-                    
-                    # Model Dropdown container
-                    dropdowns.models(),
-
-                    # Feature Engineering Dropdown container
-                    dropdowns.feature_engineering(),
-
-                    # Manuel Feature Selection Dropdown container
-                    dropdowns.manuel_feature_selection(),
-                ],
-                className='dropdowns-container',
-            ),
-
-            # Submit Button
-            buttons.submit_button(),
-
-            # results
-            loadings.results(),
         ],
     )
 
 
-def create_visualization() -> html.Div:
+def create_visualization_layout() -> html.Div:
     return html.Div(
         className='content',
         children=[
@@ -232,4 +206,46 @@ def create_visualization() -> html.Div:
                 ]
             )
         ])
+
+
+def create_train_layout() -> html.Div:
+    return html.Div(
+        className="body",
+        children=[
+            # upload data Container
+            uploads.upload_data(ids.UPLOAD_DATA_MAIN),
+
+            # Data Table container
+            loadings.data_table(ids.DATA_TABLE_MAIN),
+
+            html.Br(),
+
+            # Dropdowns container
+            html.Div(
+                [
+                    # Problem Dropdown container
+                    dropdowns.problems(),
+                
+                    # Attributes Dropdown container
+                    dropdowns.select_target(),
+                    
+                    # Model Dropdown container
+                    dropdowns.models(),
+
+                    # Feature Engineering Dropdown container
+                    dropdowns.feature_engineering(),
+
+                    # Manuel Feature Selection Dropdown container
+                    dropdowns.manuel_feature_selection(),
+                ],
+                className='dropdowns-container',
+            ),
+
+            # Submit Button
+            buttons.submit_button(),
+
+            # results
+            loadings.results(),
+        ],
+    )
 

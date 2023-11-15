@@ -46,7 +46,7 @@ def create_main_layout() -> html.Div:
 
 def create_visualization() -> html.Div:
     return html.Div(
-        className='body',
+        className='content',
         children=[
             # upload data Container
             uploads.upload_data(ids.UPLOAD_DATA_VIS),
@@ -76,8 +76,8 @@ def create_visualization() -> html.Div:
                     html.Br(),
 
                     html.Div(
-                        dcc.Graph(id=ids.SINGLE_ATTRIBUTE_GRAPH),
                         id=ids.SINGLE_ATTRIBUTE_GRAPH_CONTAINER,
+                        className="visual-container"
                     )
                 ]
             ),
@@ -113,8 +113,8 @@ def create_visualization() -> html.Div:
                     html.Br(),
 
                     html.Div(
-                        dcc.Graph(id=ids.TWO_ATTRIBUTES_GRAPH),
                         id=ids.TWO_ATTRIBUTES_GRAPH_CONTAINER,
+                        className="visual-container",
                     )
                 ]
             ),
@@ -160,8 +160,8 @@ def create_visualization() -> html.Div:
                     html.Br(),
 
                     html.Div(
-                        dcc.Graph(id=ids.THREE_ATTRIBUTES_GRAPH),
                         id=ids.THREE_ATTRIBUTES_GRAPH_CONTAINER,
+                        className="visual-container"
                     )
                 ]
             ),
@@ -189,8 +189,8 @@ def create_visualization() -> html.Div:
                     html.Br(),
 
                     html.Div(
-                        dcc.Graph(id=ids.CORRELATION_MATRIX_GRAPH),
                         id=ids.CORRELATION_MATRIX_GRAPH_CONTAINER,
+                        className="visual-container"
                     ),
             
                     html.Br(),

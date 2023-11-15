@@ -1,4 +1,11 @@
-.body {
+body {
+    justify-content: center; /* Horizontally center the items */
+    align-items: center; /* Vertically center the items */
+    text-align: center;
+    background-color: rgb(155, 158, 165);
+}
+
+.content {
     justify-content: center; /* Horizontally center the items */
     align-items: center; /* Vertically center the items */
     text-align: center;

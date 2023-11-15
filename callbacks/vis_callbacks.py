@@ -57,8 +57,7 @@ def upload_data_vis(list_of_contents, list_of_names):
 
 
 @callback(
-    Output(ids.SINGLE_ATTRIBUTE_GRAPH, 'figure'),
-    Output(ids.SINGLE_ATTRIBUTE_GRAPH_CONTAINER, 'className'),
+    Output(ids.SINGLE_ATTRIBUTE_GRAPH_CONTAINER, 'children'),
     Input(ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
@@ -66,16 +65,14 @@ def update_single_attribute_graph(col):
     global DATA
     if DATA is not None and col is not None:
         column = DATA[col]
-        return px.histogram(column), "visual-container"
+        graph = dcc.Graph(figure=px.histogram(column))
+        return [graph] 
     else:
-        return {}, 'invisible'
+        return []
 
 
 @callback(
-    [
-        Output(ids.TWO_ATTRIBUTES_GRAPH, 'figure'),
-        Output(ids.TWO_ATTRIBUTES_GRAPH_CONTAINER, 'className')
-    ],
+    Output(ids.TWO_ATTRIBUTES_GRAPH_CONTAINER, 'children'),
     [
         Input(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1, 'value'),
         Input(ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2, 'value')
@@ -87,16 +84,15 @@ def update_two_attributes_graph(col1, col2):
     if DATA is not None and col1 is not None and col2 is not None:
         data_x = DATA[col1]
         data_y = DATA[col2]
-        return px.scatter(x=data_x, y=data_y, labels={'x':col1, 'y':col2}), "visual-container"
+        fig = px.scatter(x=data_x, y=data_y, labels={'x':col1, 'y':col2})
+        graph = dcc.Graph(figure=fig)
+        return graph
     else:
-        return {}, 'invisible'
+        return []
 
 
 @callback(
-    [
-        Output(ids.THREE_ATTRIBUTES_GRAPH, 'figure'),
-        Output(ids.THREE_ATTRIBUTES_GRAPH_CONTAINER, 'className')
-    ],
+    Output(ids.THREE_ATTRIBUTES_GRAPH_CONTAINER, 'children'),
     [
         Input(ids.SELECT_THREE_ATTRIBUTES_DROPDOWN1, 'value'),
         Input(ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2, 'value'),
@@ -110,18 +106,17 @@ def update_three_attributes_graph(col1, col2, col3):
         (col1 is not None) and \
         (col2 is not None) and \
         (col3 is not None):
-        data_x = DATA[col1]
-        data_y = DATA[col2]
-        data_z = DATA[col3]
-        fig = px.scatter_3d(x=data_x, y=data_y, z=data_z, labels={'x':col1, 'y':col2, 'z':col3})
-        return fig, "visual-container"
+
+        #fig = px.scatter_3d(DATA, x=col1, y=col2, z=col3) # , labels={'x':col1, 'y':col2, 'z':col3}
+        fig = px.scatter(DATA, x=col1, y=col2, color=col3, labels={'x':col1, 'y':col2, 'z':col3})
+        graph = dcc.Graph(figure=fig)
+        return graph
     else:
-        return {}, 'invisible'
+        return []
 
 
 @callback(
-    Output(ids.CORRELATION_MATRIX_GRAPH, 'figure'),
-    Output(ids.CORRELATION_MATRIX_GRAPH_CONTAINER, 'className'),
+    Output(ids.CORRELATION_MATRIX_GRAPH_CONTAINER, 'children'),
     Input(ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
@@ -131,7 +126,8 @@ def update_correlation_matrix_graph(col):
         corr_data = DATA[col]
         corr_matrix = corr_data.corr()
         fig = px.imshow(corr_matrix, text_auto=True, aspect="auto")
-        return fig, "visual-container"
+        graph = dcc.Graph(figure=fig)
+        return graph
     else:
-        return {}, 'invisible'
+        return [] 
     

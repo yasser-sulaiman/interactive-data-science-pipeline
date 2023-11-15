@@ -23,14 +23,12 @@ SELECT_MANUEL_FEATURE_CONTAINER = 'select-manual-feature-container'
 # Visualization of Single attribute
 SELECT_SINGLE_ATTRIBUTE_DROPDOWN = 'select-single-attribute-dropdown'
 SINGLE_ATTRIBUTE_INFO_CONTAINER = "single-attribute-info"
-SINGLE_ATTRIBUTE_GRAPH = "single-attribute-graph"
 SINGLE_ATTRIBUTE_GRAPH_CONTAINER = "single-attribute-graph-container"
 
 # Visualization of Two attributes 
 SELECT_TWO_ATTRIBUTES_DROPDOWN1 = 'select-two-attributes-dropdown1'
 SELECT_TWO_ATTRIBUTES_DROPDOWN2 = 'select-two-attributes-dropdown2'
 TWO_ATTRIBUTES_INFO_CONTAINER = "two-attribute-info"
-TWO_ATTRIBUTES_GRAPH = "two-attributes-graph"
 TWO_ATTRIBUTES_GRAPH_CONTAINER = "two-attributes-graph-container"
 
 # Visualization of Three attributes 
@@ -38,11 +36,9 @@ SELECT_THREE_ATTRIBUTES_DROPDOWN1 = 'select-three-attributes-dropdown1'
 SELECT_THREE_ATTRIBUTES_DROPDOWN2 = 'select-three-attributes-dropdown2'
 SELECT_THREE_ATTRIBUTES_DROPDOWN3 = 'select-three-attributes-dropdown3'
 THREE_ATTRIBUTES_INFO_CONTAINER = "three-attribute-info"
-THREE_ATTRIBUTES_GRAPH = "three-attributes-graph"
 THREE_ATTRIBUTES_GRAPH_CONTAINER = "three-attributes-graph-container"
 
 # Visualization of Correlation Matrix
 CORRELATION_MATRIX = "correlation-matrix"
-CORRELATION_MATRIX_GRAPH = "correlation-matrix-graph"
 SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN = "select-correlation-matrix-attributes-dropdown"
 CORRELATION_MATRIX_GRAPH_CONTAINER = "correlation-matrix-graph-container"

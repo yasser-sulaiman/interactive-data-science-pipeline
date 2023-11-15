@@ -20,11 +20,17 @@ def main():
                     children='Where ML made easier than ever!',
                     style={'textAlign': 'center'},
                 ),
+
                 html.Div(
-                    dcc.Link("Train", href="/")
+                    dcc.Link(f"Clean", href="/cleaning")
                 ),
+
                 html.Div(
                     dcc.Link(f"Visualize", href="/visualization")
+                ),
+
+                html.Div(
+                    dcc.Link("Train", href="/")
                 )
             ],
             className='header-container',

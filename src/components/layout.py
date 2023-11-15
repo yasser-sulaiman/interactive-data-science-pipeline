@@ -63,13 +63,24 @@ def create_visualization() -> html.Div:
                 id=ids.SINGLE_ATTRIBUTE_INFO_CONTAINER,
                 children=[
                     html.Div(
-                        html.Div(
-                            dropdowns.select_attributes(
-                                ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
-                                multiple=False
+                        children=[
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
+                                    multiple=False
+                                ),
+                                className="single-attribute-dropdown-container"
                             ),
-                            className="single-attribute-dropdown-container"
-                        ),
+
+                            html.Div(
+                                dropdowns.select_plot_type(
+                                    ids.SINGLE_ATTRIBUTE_PLOT_TYPE_DROPDOWN,
+                                    n_attributes = "one",
+                                    multiple=False
+                                ),
+                                className="single-attribute-dropdown-container"
+                            )
+                        ],
                         className="vis-dropdowns-container"
                     ),
 
@@ -94,6 +105,7 @@ def create_visualization() -> html.Div:
                             html.Div(
                                 dropdowns.select_attributes(
                                     ids.SELECT_TWO_ATTRIBUTES_DROPDOWN1,
+                                    "Select X-Axis",
                                     multiple=False
                                 ),
                                 className="two-attributes-dropdown-container"
@@ -102,9 +114,19 @@ def create_visualization() -> html.Div:
                             html.Div(
                                 dropdowns.select_attributes(
                                     ids.SELECT_TWO_ATTRIBUTES_DROPDOWN2,
+                                    "Select Y-Axis",
                                     multiple=False
                                 ),
                                 className="two-attributes-dropdown-container"
+                            ),
+
+                            html.Div(
+                                dropdowns.select_plot_type(
+                                    ids.TWO_ATTRIBUTE_PLOT_TYPE_DROPDOWN,
+                                    n_attributes = "two",
+                                    multiple=False
+                                ),
+                                className="single-attribute-dropdown-container"
                             )
                         ],
                         className="vis-dropdowns-container"
@@ -134,6 +156,7 @@ def create_visualization() -> html.Div:
                             html.Div(
                                 dropdowns.select_attributes(
                                     ids.SELECT_THREE_ATTRIBUTES_DROPDOWN1,
+                                    "Select X-Axis",
                                     multiple=False
                                 ),
                                 className="three-attributes-dropdown-container"
@@ -142,6 +165,7 @@ def create_visualization() -> html.Div:
                             html.Div(
                                 dropdowns.select_attributes(
                                     ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2,
+                                    "Select Y-Axis",
                                     multiple=False
                                 ),
                                 className="three-attributes-dropdown-container"
@@ -150,10 +174,20 @@ def create_visualization() -> html.Div:
                             html.Div(
                                 dropdowns.select_attributes(
                                     ids.SELECT_THREE_ATTRIBUTES_DROPDOWN3,
+                                    "Select Z-Axis",
                                     multiple=False
                                 ),
                                 className="three-attributes-dropdown-container"
                             ),
+
+                            html.Div(
+                                dropdowns.select_plot_type(
+                                    ids.THREE_ATTRIBUTE_PLOT_TYPE_DROPDOWN,
+                                    n_attributes = "three",
+                                    multiple=False
+                                ),
+                                className="single-attribute-dropdown-container"
+                            )
                         ],
                         className="vis-dropdowns-container"
                     ),

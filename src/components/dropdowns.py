@@ -118,15 +118,60 @@ def manuel_feature_selection():
     return dropdown
 
 
-def select_attributes(dd_id, multiple=False):
+def select_attributes(dd_id, label="Select an Attribute", multiple=False):
     dropdown = html.Div([
-                    'Select an Attribute',
+                    label,
                     dcc.Dropdown(
-                        id=dd_id,
-                        placeholder='Select an Attribute',
-                        multi=multiple,
+                            id=dd_id,
+                            placeholder='Select an Attribute',
+                            multi=multiple,
                         ),
                     ],
                 )
     return dropdown
 
+
+def select_plot_type(dd_id, n_attributes,multiple=False):
+    if n_attributes == "one":
+        options = ["Histogram", "Box", "Bar"]
+        dropdown = html.Div([
+                        'Select a Plot Type',
+                        dcc.Dropdown(
+                                options=options,
+                                id=dd_id,
+                                placeholder='Select a Plot Type',
+                                multi=multiple,
+                                value="Histogram"
+                            ),
+                        ],
+                    )
+        
+    elif n_attributes == "two":
+        options = ["Scatter", "Line"]
+        dropdown = html.Div([
+                        'Select a Plot Type',
+                        dcc.Dropdown(
+                                options=options,
+                                id=dd_id,
+                                placeholder='Select a Plot Type',
+                                multi=multiple,
+                                value="Scatter"
+                            ),
+                        ],
+                    )
+        
+    elif n_attributes == "three":
+        options = ["Scatter 2D", "Scatter 3D"]
+        dropdown = html.Div([
+                        'Select a Plot Type',
+                        dcc.Dropdown(
+                                options=options,
+                                id=dd_id,
+                                placeholder='Select a Plot Type',
+                                multi=multiple,
+                                value="Scatter 2D"
+                            ),
+                        ],
+                    )
+        
+    return dropdown

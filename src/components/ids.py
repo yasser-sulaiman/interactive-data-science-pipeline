@@ -1,8 +1,11 @@
-UPLOAD_DATA_MAIN = 'upload-data'
+UPLOAD_DATA_CLEANING = 'upload-data-cleaning'
 UPLOAD_DATA_VIS = 'upload-data-VIS'
+UPLOAD_DATA_MAIN = 'upload-data'
 
-DATA_TABLE_MAIN = 'data-table'
+DATA_TABLE_CLEANING = 'data-table-cleaning'
 DATA_TABLE_VIS = 'data-table-vis'
+DATA_TABLE_MAIN = 'data-table'
+
 
 RESULTS_CONTAINER = 'results-container'
 SUBMIT_BUTTON_CONTAINER = 'submit-button-container'

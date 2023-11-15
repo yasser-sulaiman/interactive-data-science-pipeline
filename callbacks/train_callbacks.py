@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from dash import callback
 from dash import dash_table
 from dash import dcc
@@ -23,13 +21,13 @@ Y = None
 
 @callback(
     [
-        Output('data-table', 'data'),
-        Output('data-table', 'columns'),
-        Output('target-dropdown-selection', 'options'),
-        Output('select-problem-container', 'className'),
+        Output(ids.DATA_TABLE_TRAIN, 'data'),
+        Output(ids.DATA_TABLE_TRAIN, 'columns'),
+        Output(ids.TARGET_DROPDOWN, 'options'),
+        Output(ids.SELECT_PROBLEM_CONTAINER, 'className'),
     ],
-    [Input('upload-data', 'contents')],
-    [State('upload-data', 'filename')],
+    [Input(ids.UPLOAD_DATA_TRAIN, 'contents')],
+    [State(ids.UPLOAD_DATA_TRAIN, 'filename')],
     prevent_initial_callbacks=True,
 )
 def upload_data_main(list_of_contents, list_of_names):
@@ -51,8 +49,8 @@ def upload_data_main(list_of_contents, list_of_names):
 
 
 @callback(
-    Output('select-target-container', 'className'),
-    Input('problem-dropdown-selection', 'value'),
+    Output(ids.SELECT_TARGET_CONTAINER, 'className'),
+    Input(ids.PROBLEMS_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
 def select_problem(problem):
@@ -63,8 +61,8 @@ def select_problem(problem):
 
 
 @callback(
-    Output('select-model-container', 'className'),
-    Input('target-dropdown-selection', 'value'),
+    Output(ids.SELECT_MODEL_CONTAINER, 'className'),
+    Input(ids.TARGET_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
 def select_target(target):
@@ -83,8 +81,8 @@ def select_target(target):
 
 
 @callback(
-    Output('select-feature-container', 'className'),
-    Input('model-dropdown-selection', 'value'),
+    Output(ids.SELECT_FEATURE_CONTAINER, 'className'),
+    Input(ids.MODELS_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
 def select_model(model):
@@ -94,10 +92,10 @@ def select_model(model):
 
 
 @callback(
-    Output('submit-button-container', 'className'),
-    Output('select-manual-feature-container', 'className'),
-    Output('manuel-feature-selection', 'options'),
-    Input('feature-dropdown-selection', 'value'),
+    Output(ids.SUBMIT_BUTTON_CONTAINER, 'className'),
+    Output(ids.SELECT_MANUEL_FEATURE_CONTAINER, 'className'),
+    Output(ids.MANUEL_FEATURE_DROPDOWN, 'options'),
+    Input(ids.FEATURE_DROPDOWN, 'value'),
     prevent_initial_callbacks=True,
 )
 def feature_selection(value):
@@ -118,8 +116,8 @@ def feature_selection(value):
 
 
 @callback(
-    Output('submit-button-container', 'className', allow_duplicate=True),
-    Input('manuel-feature-selection', 'value'),
+    Output(ids.SUBMIT_BUTTON_CONTAINER, 'className', allow_duplicate=True),
+    Input(ids.MANUEL_FEATURE_DROPDOWN, 'value'),
     prevent_initial_call=True,
 )
 def manuel_feature_selection(value):
@@ -134,13 +132,13 @@ def manuel_feature_selection(value):
 
 
 @callback(
-    Output('results-container', 'children'),
-    Output('results-container', 'className'),
-    Input('submit-button', 'n_clicks'),
-    State('problem-dropdown-selection', 'value'),
-    State('target-dropdown-selection', 'value'),
-    State('model-dropdown-selection', 'value'),
-    State('feature-dropdown-selection', 'value'),
+    Output(ids.RESULTS_CONTAINER, 'children'),
+    Output(ids.RESULTS_CONTAINER, 'className'),
+    Input(ids.SUBMIT_BUTTON, 'n_clicks'),
+    State(ids.PROBLEMS_DROPDOWN, 'value'),
+    State(ids.TARGET_DROPDOWN, 'value'),
+    State(ids.MODELS_DROPDOWN, 'value'),
+    State(ids.FEATURE_DROPDOWN, 'value'),
 )
 def submit(n_clicks, problem, target, model, feature):
     if not n_clicks:

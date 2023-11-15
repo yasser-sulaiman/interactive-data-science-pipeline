@@ -213,10 +213,10 @@ def create_train_layout() -> html.Div:
         className="body",
         children=[
             # upload data Container
-            uploads.upload_data(ids.UPLOAD_DATA_MAIN),
+            uploads.upload_data(ids.UPLOAD_DATA_TRAIN),
 
             # Data Table container
-            loadings.data_table(ids.DATA_TABLE_MAIN),
+            loadings.data_table(ids.DATA_TABLE_TRAIN),
 
             html.Br(),
 

@@ -5,6 +5,19 @@ body {
     background-color: rgb(155, 158, 165);
 }
 
+.links-container a {
+    display: inline-block; /* or 'inline' */
+    margin-right: 0%; /* Adjust the spacing between links */
+    text-decoration: none; /* Remove underline */
+    padding: 0.5%;
+    color: #000000; /* Set link color */
+}
+
+.links-container a:hover {
+    background-color: lightgreen;
+}
+
+
 .content {
     justify-content: center; /* Horizontally center the items */
     align-items: center; /* Vertically center the items */

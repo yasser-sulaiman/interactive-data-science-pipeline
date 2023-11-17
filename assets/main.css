@@ -126,3 +126,26 @@ body {
     clear: both;
 }
 
+.data-summary-container {
+    align-items: center;
+    text-align: center;
+}
+
+.column-summary-container {
+    display: inline-block; /* or 'inline' */
+    margin: 1%; /* Adjust the spacing between links */
+    padding: 0.5%;
+    color: #080808; /* Set link color */
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    text-align: left;
+    width: 10%;
+}
+
+.column-summary-item {
+    margin: 0.5%; /* Adjust the spacing between links */
+    color: #080808; /* Set link color */
+    text-align: left;
+}
+

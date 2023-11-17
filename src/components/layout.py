@@ -14,6 +14,14 @@ def create_cleaning_layout()-> html.Div:
 
             html.Br(),
 
+            # Data Summary Container
+            html.Div(
+                children=[html.Img(src='assets/clean-me.png', style={'width': '80%', 'height': '720px'})],
+                id=ids.DATA_SUMMARY_CONTAINER,
+                className="data-summary-container"
+                
+            )
+
         ],
     )
 

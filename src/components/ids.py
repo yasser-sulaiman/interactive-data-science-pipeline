@@ -49,3 +49,6 @@ THREE_ATTRIBUTE_PLOT_TYPE_DROPDOWN = "three-attribute-plot-type-dropdown"
 CORRELATION_MATRIX = "correlation-matrix"
 SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN = "select-correlation-matrix-attributes-dropdown"
 CORRELATION_MATRIX_GRAPH_CONTAINER = "correlation-matrix-graph-container"
+
+
+DATA_SUMMARY_CONTAINER = "data-summary-container"

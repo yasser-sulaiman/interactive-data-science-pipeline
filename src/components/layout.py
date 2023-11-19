@@ -51,7 +51,7 @@ def create_visualization_layout() -> html.Div:
                                     ids.SELECT_SINGLE_ATTRIBUTE_DROPDOWN,
                                     multiple=False
                                 ),
-                                className="single-attribute-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -60,7 +60,7 @@ def create_visualization_layout() -> html.Div:
                                     n_attributes = "one",
                                     multiple=False
                                 ),
-                                className="single-attribute-dropdown-container"
+                                className="attributes-dropdown-container"
                             )
                         ],
                         className="vis-dropdowns-container"
@@ -90,7 +90,7 @@ def create_visualization_layout() -> html.Div:
                                     "Select X-Axis",
                                     multiple=False
                                 ),
-                                className="two-attributes-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -99,7 +99,7 @@ def create_visualization_layout() -> html.Div:
                                     "Select Y-Axis",
                                     multiple=False
                                 ),
-                                className="two-attributes-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -108,7 +108,7 @@ def create_visualization_layout() -> html.Div:
                                     n_attributes = "two",
                                     multiple=False
                                 ),
-                                className="single-attribute-dropdown-container"
+                                className="attributes-dropdown-container"
                             )
                         ],
                         className="vis-dropdowns-container"
@@ -141,7 +141,7 @@ def create_visualization_layout() -> html.Div:
                                     "Select X-Axis",
                                     multiple=False
                                 ),
-                                className="three-attributes-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -150,7 +150,7 @@ def create_visualization_layout() -> html.Div:
                                     "Select Y-Axis",
                                     multiple=False
                                 ),
-                                className="three-attributes-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -159,7 +159,7 @@ def create_visualization_layout() -> html.Div:
                                     "Select Z-Axis",
                                     multiple=False
                                 ),
-                                className="three-attributes-dropdown-container"
+                                className="attributes-dropdown-container"
                             ),
 
                             html.Div(
@@ -168,7 +168,7 @@ def create_visualization_layout() -> html.Div:
                                     n_attributes = "three",
                                     multiple=False
                                 ),
-                                className="single-attribute-dropdown-container"
+                                className="attributes-dropdown-container"
                             )
                         ],
                         className="vis-dropdowns-container"
@@ -178,6 +178,65 @@ def create_visualization_layout() -> html.Div:
                     html.Div(
                         id=ids.THREE_ATTRIBUTES_GRAPH_CONTAINER,
                         className="visual-container"
+                    )
+                ]
+            ),
+
+            html.Br(),
+
+            ########################## Aggregation ########################
+            html.Div("Aggregation Info Container"),
+
+            html.Div(
+                className="aggregation-info-container",
+                id=ids.AGGREGATION_INFO_CONTAINER,
+                children=[
+                    html.Div(
+                        children=[
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_AGGREGATION_ATTRIBUTES_DROPDOWN,
+                                    "Select Aggregation Attributes",
+                                    multiple=True
+                                ),
+                                className="attributes-dropdown-container"
+                            ),
+
+                            html.Div(
+                                dropdowns.select_attributes(
+                                    ids.SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN,
+                                    "Select Output Attribute",
+                                    multiple=False
+                                ),
+                                className="attributes-dropdown-container"
+                            ),
+
+                            html.Div(
+                                dropdowns.select_aggregation_function(
+                                    ids.SELECT_AGGREGATION_FUNCTION_DROPDOWN,
+                                    "Select Aggregation Function",
+                                    multiple=False
+                                ),
+                                className="attributes-dropdown-container"
+                            ),
+
+                            html.Div(
+                                dropdowns.select_plot_type(
+                                    ids.AGGREGATION_PLOT_TYPE_DROPDOWN,
+                                    n_attributes = "one",
+                                    multiple=False
+                                ),
+                                className="attributes-dropdown-container"
+                            )
+                        ],
+                        className="vis-dropdowns-container"
+                    ),
+
+                    html.Br(),
+
+                    html.Div(
+                        id=ids.AGGREGATION_GRAPH_CONTAINER,
+                        className="visual-container",
                     )
                 ]
             ),

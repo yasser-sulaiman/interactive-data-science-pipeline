@@ -175,3 +175,19 @@ def select_plot_type(dd_id, n_attributes,multiple=False):
                     )
         
     return dropdown
+
+
+def select_aggregation_function(dd_id, label="Select Aggregation Function", multiple=False):
+    options = ["Mean", "Median", "Min", "Max", "Sum"]
+    dropdown = html.Div([
+                    label,
+                    dcc.Dropdown(
+                            options=options,
+                            id=dd_id,
+                            placeholder='Select a Function',
+                            multi=multiple,
+                            value="Mean"
+                        ),
+                    ],
+                )
+    return dropdown

@@ -50,5 +50,13 @@ CORRELATION_MATRIX = "correlation-matrix"
 SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN = "select-correlation-matrix-attributes-dropdown"
 CORRELATION_MATRIX_GRAPH_CONTAINER = "correlation-matrix-graph-container"
 
+# Visualization of Aggregation
+AGGREGATION_INFO_CONTAINER = "aggregation-info"
+SELECT_AGGREGATION_ATTRIBUTES_DROPDOWN = "select-aggregation-attributes-dropdown"
+SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN = "select-aggregation-output-attribute-dropdown"
+SELECT_AGGREGATION_FUNCTION_DROPDOWN = "select-aggregation-function-dropdown"
+AGGREGATION_PLOT_TYPE_DROPDOWN = "aggregation-plot-type-dropdown"
+AGGREGATION_GRAPH_CONTAINER = "aggregation-graph-container"
+
 
 DATA_SUMMARY_CONTAINER = "data-summary-container"

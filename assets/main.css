@@ -17,7 +17,6 @@ body {
     background-color: lightgreen;
 }
 
-
 .content {
     justify-content: center; /* Horizontally center the items */
     align-items: center; /* Vertically center the items */
@@ -85,16 +84,16 @@ body {
     background-color:cadetblue;
 }
 
+.aggregation-info-container {
+    background-color:rgb(97, 224, 80);
+}
+
 .correlation-matrix-info-container {
-    background-color:blueviolet;
+    background-color:rgb(8, 109, 122);
     min-height: 100px;
 }
 
-
-.single-attribute-dropdown-container,
-.two-attributes-dropdown-container,
-.three-attributes-dropdown-container,
-.correlation-matrix-attributes-dropdown-container{
+.attributes-dropdown-container {
     float: left; 
     width: 98%;
     border-radius: 5px;
@@ -115,12 +114,12 @@ body {
 }
 
 
-
 /* Clearfix to handle float clearing */
 .single-attribute-info-container::after,
 .two-attributes-info-container::after ,
 .three-attributes-info-container::after,
-.multiple-attributes-info-container::after {
+.multiple-attributes-info-container::after,
+.aggregation-info-container::after {
     content: "";
     display: table;
     clear: both;

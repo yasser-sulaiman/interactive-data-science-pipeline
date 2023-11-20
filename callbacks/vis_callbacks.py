@@ -13,7 +13,7 @@ from src.components import ids
 
 DATA = None
 X = None
-SELECTED_COLUMNS = None
+ALL_COLUMNS = None
 Y = None
 @callback(
     [
@@ -26,6 +26,8 @@ Y = None
         Output(ids.SELECT_THREE_ATTRIBUTES_DROPDOWN2, 'options'),
         Output(ids.SELECT_THREE_ATTRIBUTES_DROPDOWN3, 'options'),
         Output(ids.SELECT_CORRELATION_MATRIX_ATTRIBUTES_DROPDOWN, 'options'),
+        Output(ids.SELECT_AGGREGATION_ATTRIBUTES_DROPDOWN, 'options'),
+        # Output(ids.SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN, 'options'),
     ],
     [Input(ids.UPLOAD_DATA_VIS, 'contents')],
     [State(ids.UPLOAD_DATA_VIS, 'filename')],
@@ -33,7 +35,7 @@ Y = None
     
 )
 def upload_data_vis(list_of_contents, list_of_names):
-    global DATA
+    global DATA, ALL_COLUMNS
 
     if list_of_contents is not None:
         DATA = parse_contents(list_of_contents, list_of_names)
@@ -41,6 +43,7 @@ def upload_data_vis(list_of_contents, list_of_names):
         if len(DATA) > 0:
             df_head = DATA.head(10)
             attributes = df_head.columns.values
+            ALL_COLUMNS = attributes.tolist()
             return (
                 df_head.to_dict('records'),
                 [{'name': i, 'id': i} for i in df_head.columns],
@@ -51,9 +54,11 @@ def upload_data_vis(list_of_contents, list_of_names):
                 attributes,
                 attributes,
                 attributes,
+                attributes,
+                # attributes,
             )
 
-    return [], [], [], [], [], [], [], [], []
+    return [], [], [], [], [], [], [], [], [], []#, []
 
 
 @callback(
@@ -145,6 +150,75 @@ def update_three_attributes_graph(col1, col2, col3, plot_type):
         elif plot_type == "Scatter 3D":
             fig = px.scatter_3d(DATA, x=col1, y=col2, z=col3) # , labels={'x':col1, 'y':col2, 'z':col3}
         
+        else:
+            fig = {}
+
+        graph = dcc.Graph(figure=fig)
+
+        return graph
+    else:
+        return []
+
+
+@callback(
+    Output(ids.SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN, 'options'),
+    Input(ids.SELECT_AGGREGATION_ATTRIBUTES_DROPDOWN, 'value'),
+    prevent_initial_callbacks=True,
+)
+def update_aggregation_output_dropdown(agg_attrs):
+    global ALL_COLUMNS
+    if agg_attrs:
+        # return the difference between all columns and the selected columns as a list of column names
+        return [col for col in ALL_COLUMNS if col not in agg_attrs]
+    else:
+        return []
+
+
+@callback(
+    Output(ids.AGGREGATION_GRAPH_CONTAINER, 'children'),
+    [
+        Input(ids.SELECT_AGGREGATION_ATTRIBUTES_DROPDOWN, 'value'),
+        Input(ids.SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN, 'value'),
+        Input(ids.SELECT_AGGREGATION_FUNCTION_DROPDOWN, 'value'),
+        Input(ids.AGGREGATION_PLOT_TYPE_DROPDOWN, 'value')
+    ],
+    prevent_initial_callbacks=True,
+)
+def update_aggregation_graph(agg_attrs, output_attr, agg_function, plot_type):
+    global DATA
+    if (DATA is not None) and \
+        (len(agg_attrs) > 0) and \
+        (output_attr is not None) and \
+        (agg_function is not None) and \
+        (output_attr not in agg_attrs):
+
+        grouped_data = DATA.groupby(by=agg_attrs).agg({output_attr:agg_function.lower()}).reset_index()
+        
+        if len(agg_attrs) == 1:
+            new_col_name = agg_attrs[0]
+        else:
+            new_col_name = ', '.join(agg_attrs)
+            grouped_data[new_col_name] = ''
+            for i, col in enumerate(agg_attrs):
+                grouped_data[new_col_name] += grouped_data[col].astype(str)
+                if i != len(agg_attrs) - 1:
+                    grouped_data[new_col_name] += ', '
+
+        if plot_type == "Bar":
+            fig = px.bar(grouped_data, x=new_col_name, y=output_attr)
+            fig.update_xaxes(showticklabels=False)
+            fig.update_yaxes(showticklabels=False)
+
+        elif plot_type == "Line":
+            fig = px.line(grouped_data, x=new_col_name, y=output_attr)
+            fig.update_xaxes(showticklabels=False)
+            fig.update_yaxes(showticklabels=False)
+        
+        elif plot_type == "Scatter":
+            fig = px.scatter(grouped_data, x=new_col_name, y=output_attr)
+            fig.update_xaxes(showticklabels=False)
+            fig.update_yaxes(showticklabels=False)
+
         else:
             fig = {}
 

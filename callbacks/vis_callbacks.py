@@ -174,6 +174,39 @@ def update_aggregation_output_dropdown(agg_attrs):
         return []
 
 
+# add callback to update the aggregation function dropdown based on the dtype of the output attribute
+@callback(
+    Output(ids.SELECT_AGGREGATION_FUNCTION_DROPDOWN, 'options'),
+    Input(ids.SELECT_AGGREGATION_OUTPUT_ATTRIBUTE_DROPDOWN, 'value'),
+    prevent_initial_callbacks=True,
+)
+def update_aggregation_function_dropdown(output_attr):
+    global DATA
+    if output_attr and DATA is not None:
+        # Get the dtype of the output attribute
+        dtype = DATA[output_attr].dtype
+        
+        # Define the aggregation functions based on the dtype
+        if dtype == 'int64' or dtype == 'float64':
+            aggregation_functions = [
+                {'label': 'Mean', 'value': 'mean'},
+                {'label': 'Sum', 'value': 'sum'},
+                {'label': 'Min', 'value': 'min'},
+                {'label': 'Max', 'value': 'max'}
+            ]
+        elif dtype == 'object':
+            aggregation_functions = [
+                {'label': 'Count', 'value': 'count'},
+                {'label': 'Unique', 'value': 'nunique'}
+            ]
+        else:
+            aggregation_functions = []
+        
+        return aggregation_functions
+    else:
+        return []
+
+
 @callback(
     Output(ids.AGGREGATION_GRAPH_CONTAINER, 'children'),
     [
@@ -192,7 +225,7 @@ def update_aggregation_graph(agg_attrs, output_attr, agg_function, plot_type):
         (agg_function is not None) and \
         (output_attr not in agg_attrs):
 
-        grouped_data = DATA.groupby(by=agg_attrs).agg({output_attr:agg_function.lower()}).reset_index()
+        grouped_data = DATA.groupby(by=agg_attrs).agg({output_attr:agg_function}).reset_index()
         
         if len(agg_attrs) == 1:
             new_col_name = agg_attrs[0]
